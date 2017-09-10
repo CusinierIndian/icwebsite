@@ -98,6 +98,11 @@ a.nav-link:hover {
 .card-title{
 	text-align: center!important;
 }
+.card-text{
+	text-align: justify;
+    -moz-text-align-last: left; /* Code for Firefox */
+    text-align-last: left;
+}
 .service-logo{
 	font-size:45px;
 	color:rgba(0, 188, 212, 0.64);
