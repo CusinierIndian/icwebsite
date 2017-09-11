@@ -1,8 +1,15 @@
+
 .container-fluid{
     padding:0px;
 }
+	:target:before {
+	content:"";
+	display:block;
+	height:80px; /* fixed header height*/
+	margin:-80px 0 0; /* negative fixed header height */
+	}
 .img-container{
-	background-image: url(../images/carrier.png);
+	background:url("../images/carrier.jpg") no-repeat center center fixed transparent;
     min-height: 600px;
     min-width: 100%;
     background-attachment: fixed;
@@ -15,7 +22,7 @@
     z-index:-2;
 }
 .carrier-img{
-	background-image: url(../images/carrier.png);
+	background:url("../images/carrier.jpg") no-repeat center center fixed transparent;
     min-height: 600px;
     min-width: 100%;
     background-attachment: fixed;
@@ -81,19 +88,38 @@ a.nav-link:hover {
 }
 .services-content{
 	padding: 25px;
-	background:#dcdcdc;
+	background:#fff;
+}
+.row{
+	margin:0px;
 }
 .services-content >.row,.contact-us-content>.row{
 	padding:15px 0px;
 	margin:0px;
 }
-.service-heading{
+.fixed-navbar-shadow{
+	box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+.service-heading,.career-heading{
 	font-size: 32px;
     font-weight: 600;
     color:#31aab9;
 }
 .card-wraper{
 	margin:10px 0px;
+}
+.effect{
+   -webkit-animation-duration: 1s;
+  /*-webkit-animation-delay: 2s;*/
+}
+.card{
+	box-shadow: 1px 2px 5px #dcdcdc;
+	border-top:3px solid #00BCD4;
+}
+.card:hover{
+	box-shadow:5px 10px 15px #ccc;
+	-webkit-animation: bounce 1s;
+    animation: bounce 1s;
 }
 .card-title{
 	text-align: center!important;
@@ -110,10 +136,10 @@ a.nav-link:hover {
 .career-content{
 	padding:25px;
 }
-.career-heading{
+/*.career-heading{
 	color: #037988;
     font-size: 30px;
-}
+}*/
 .career-msg{
 	background-color: rgba(255, 255, 255, 0.66);
     border-radius: 5px;
@@ -203,5 +229,86 @@ label{
     font-size: 20px;
     background: rgba(255, 255, 255, 0.48);
     margin: 0px 5px;
+
+}
+.link-page{
+	background: rgba(158, 158, 158, 0.56);
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0px 10px;
+    color: #fff;
+}
+.facebook-icon{
+	padding: 9px 16px;
+}
+.instagram-icon{
+	padding: 9px 13px;
+}
+.twitter-icon{
+	padding: 8px 11px;
+}
+.link-page:hover{
+	text-decoration: none !important;
+    color: #03A9F4;
+    background: rgba(158, 158, 158, 0.32);
+}
+.padding-15{
+	padding:15px;
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575px) {
+	.home-content{
+		padding:10px;
+	}
+	.conter-span-days >div {
+    	min-width: 65px;
+    	padding: 3px 8px;
+    	font-size: 16px;
+	}
+	.conter-span-no >div{
+		min-width: 65px;
+	    padding: 7px 10px;
+	    font-size: 20px;
+
+	}
+	.navbar{
+		background-color:#fff !important;
+	}
+	.nav-link{
+		color:#000 !important;
+	}
+	.service-heading,.career-heading{
+		font-size:25px;
+	}
+	.services-content,.career-content,.contact-us-content{
+		padding:10px;
+	}
+	.contact-us-border{
+		border:none;
+	}
+	.transparent-navbar a.nav-link{
+		color:#000 !important;
+	}
+}
+
+ /*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767px) { 
+
+}
+
+ /*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px) { 
+
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
 
 }

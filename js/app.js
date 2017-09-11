@@ -27,6 +27,37 @@ $(document).ready(function(){
 	}, 1000);
 
 
+	// for closing nav-bar link after click
+	$('.nav-link').on('click',function(e) {
+ 		$('.navbar-collapse').collapse('hide');
+ 		
+	});
+
+	// for smooth scrolling
+	$("a").on('click', function(event) {
+    
+	    // Make sure this.hash has a value before overriding default behavior
+	    if (this.hash !== "") {
+	      	// Prevent default anchor click behavior
+			event.preventDefault();
+
+			// Store hash
+			var hash = this.hash;
+			var position = ($(hash).offset().top - 80) + 'px';
+			console.log("position",position);
+
+			// Using jQuery's animate() method to add smooth page scroll
+			// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+			$('html, body').animate({
+				scrollTop: position
+				}, 1000, function(){
+				// Add hash (#) to URL when done scrolling (default click behavior)
+				window.location.hash = hash;
+			});
+    	} // End if
+	});
+
+
 	//color change based on user input for contact us form 
 	
 
@@ -70,13 +101,13 @@ $(document).ready(function(){
 
 	    if(height  > 90) {
 	        console.log("condition true");
-	        $('.navbar').removeClass('transparent-navbar').addClass('fixed-navbar');
+	        $('.navbar').removeClass('transparent-navbar').addClass('fixed-navbar fixed-navbar-shadow');
 	    }
 	    else{
 	    	console.log("condition false");
-	    	$('.navbar').removeClass('fixed-navbar').addClass('transparent-navbar');
+	    	$('.navbar').removeClass('fixed-navbar fixed-navbar-shadow').addClass('transparent-navbar');
 	    }
 	});
 
-	window.addEventListener("hashchange", function() { scrollBy(0, -50) })
+	// window.addEventListener("hashchange", function() { scrollBy(10, -50) })
 })
