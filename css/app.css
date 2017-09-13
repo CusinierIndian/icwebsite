@@ -255,6 +255,9 @@ label{
 .padding-15{
 	padding:15px;
 }
+.center{
+		text-align: center;
+	}
 
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575px) {
@@ -294,12 +297,29 @@ label{
 
  /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767px) { 
+	.navbar{
+		background-color:#fff !important;
+	}
+	.nav-link{
+		color:#000 !important;
+	}
+	.transparent-navbar a.nav-link{
+		color:#000 !important;
+	}
 
 }
 
  /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991px) { 
-
+	.navbar{
+		background-color:#fff !important;
+	}
+	.nav-link{
+		color:#000 !important;
+	}
+	.transparent-navbar a.nav-link{
+		color:#000 !important;
+	}
 
 }
 
