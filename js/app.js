@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	console.log("page is loaded");
 
-	var countDownDate = new Date("Sep 25, 2017 11:46:00").getTime();
+	var countDownDate = new Date("Nov 1, 2017 11:46:00").getTime();
 	var x = setInterval(function() {
 
 	    // Get todays date and time
@@ -61,39 +61,93 @@ $(document).ready(function(){
 	//color change based on user input for contact us form 
 	
 
-	$('#contactName').keyup(function(){
+	//color change based on user input for contact us form
+
+
+
+    //var contactNamePattern=/^[a-zA-Z]+$/;
+
+    var msg;
+
+    $('#contactName').keyup(function () {
+
         var data = $(this).val();
-        console.log(data);
-        if(data.length > 2){
-            $(this).parent('div').removeClass('has-warning').addClass('has-success');
-        }
-        else{
-            $(this).parent('div').removeClass('has-success').addClass('has-warning');
-        }    
-    });
-    var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
-    $('#contactEmail').keyup(function(e){
+        console.log(data);
+
+        if (data.length >= 1) {
+
+            $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
+        }
+
+        else {
+
+            $(this).parent('div').removeClass('has-success').addClass('has-warning');
+
+
+
+        }
+
+        document.getElementById("cformName").innerHTML = msg;
+
+    });
+
+
+
+    var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+    $('#contactEmail').keyup(function (e) {
+
         var data = $('#contactEmail').val().trim();
+
         console.log(data);
-        if(data.match(pattern)){
+
+        if (data.match(pattern)) {
+
             $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
         }
-        else{
+
+        else {
+
             $(this).parent('div').removeClass('has-success').addClass('has-warning');
-        }    
-    });
-    $('#contactPhone').keyup(function(e){
-        var data = $('#contactPhone').val().trim();
-        console.log(data);
-        if(data.length > 9){
-            $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
         }
-        else{
-            $(this).parent('div').removeClass('has-success').addClass('has-warning');
-        }    
+
     });
 
+
+
+
+
+    var text;
+
+    $('#contactPhone').keyup(function (e) {
+
+        var data = $('#contactPhone').val().trim();
+
+        console.log(data);
+
+        if ((isNaN(data))) {
+
+            $(this).parent('div').removeClass('has-success').addClass('has-warning');
+
+            text = "Enter number only";
+
+        }
+
+        else {
+
+            $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
+
+
+        }
+
+        document.getElementById("cformPhone").innerHTML = text;
+
+    });
 
     // changing of absolute to fixed nav bar
     $(window).scroll(function() {
@@ -112,3 +166,115 @@ $(document).ready(function(){
 	// window.addEventListener("hashchange", function() { scrollBy(10, -50) })
 })
 
+//validation for modal
+
+//var charPattern=/^[a-zA-Z]+$/;
+
+var text;
+
+$('#name').keyup(function () {
+
+    var data = $(this).val();
+
+    console.log(data);
+
+    if (data.length >= 1) {
+
+        $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
+    }
+
+    else {
+
+        $(this).parent('div').removeClass('has-success').addClass('has-warning');
+
+
+
+    }
+
+});
+
+
+var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+$('#email').keyup(function (e) {
+
+    var data = $('#email').val().trim();
+
+    console.log(data);
+
+    if (data.match(pattern)) {
+
+        $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
+    }
+
+    else {
+
+        $(this).parent('div').removeClass('has-success').addClass('has-warning');
+
+    }
+
+});
+
+
+
+var text;
+
+$('#phone-no').keyup(function (e) {
+
+    var data = $('#phone-no').val().trim();
+
+    console.log(data);
+
+
+
+    if ((isNaN(data))) {
+
+        $(this).parent('div').removeClass('has-success').addClass('has-warning');
+
+        text = "Enter number only";
+
+    }
+
+    else {
+
+        $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
+
+
+    }
+
+    document.getElementById("phnum").innerHTML = text;
+
+});
+
+
+
+//subscription email
+
+
+
+var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+
+
+$('#sub-email').keyup(function (e) {
+
+    var data = $('#sub-email').val().trim();
+
+    console.log(data);
+
+    if (data.match(pattern)) {
+
+        $(this).parent('div').removeClass('has-warning').addClass('has-success');
+
+    }
+
+    else {
+
+        $(this).parent('div').removeClass('has-success').addClass('has-warning');
+
+    }
+
+});
