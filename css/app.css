@@ -258,6 +258,10 @@ label{
 .center{
 		text-align: center;
 	}
+#map{
+	height:400px;
+	width:100%;
+}	
 
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575px) {
