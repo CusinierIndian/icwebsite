@@ -166,7 +166,10 @@ $(document).ready(function(){
 	// window.addEventListener("hashchange", function() { scrollBy(10, -50) })
 })
 
+
+
 //validation for modal
+
 
 //var charPattern=/^[a-zA-Z]+$/;
 
