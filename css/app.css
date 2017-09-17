@@ -310,6 +310,11 @@ label{
     border-right: 4px solid #18a2b8;
 
 }	
+#apply_error,#contact_error{
+	color:red;
+	width: 100%;
+	margin: 10px 0px;
+}
 
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575px) {

@@ -69,7 +69,7 @@ $(document).ready(function(){
 
     var msg;
 
-    $('#contactName').keyup(function () {
+    $('#contact_name').keyup(function () {
 
         var data = $(this).val();
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
 
         }
 
-        document.getElementById("cformName").innerHTML = msg;
+       // document.getElementById("cformName").innerHTML = msg;
 
     });
 
@@ -97,9 +97,9 @@ $(document).ready(function(){
 
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
-    $('#contactEmail').keyup(function (e) {
+    $('#contact_email').keyup(function (e) {
 
-        var data = $('#contactEmail').val().trim();
+        var data = $('#contact_email').val().trim();
 
         console.log(data);
 
@@ -123,9 +123,9 @@ $(document).ready(function(){
 
     var text;
 
-    $('#contactPhone').keyup(function (e) {
+    $('#contact_phone_no').keyup(function (e) {
 
-        var data = $('#contactPhone').val().trim();
+        var data = $('#contact_phone_no').val().trim();
 
         console.log(data);
 
@@ -172,10 +172,11 @@ $(document).ready(function(){
 
 
 //var charPattern=/^[a-zA-Z]+$/;
+var domainPort = '127.0.0.1:8000';
 
 var text;
 
-$('#name').keyup(function () {
+$('#apply_name').keyup(function () {
 
     var data = $(this).val();
 
@@ -200,9 +201,9 @@ $('#name').keyup(function () {
 
 var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
-$('#email').keyup(function (e) {
+$('#apply_email').keyup(function (e) {
 
-    var data = $('#email').val().trim();
+    var data = $('#apply_email').val().trim();
 
     console.log(data);
 
@@ -224,9 +225,9 @@ $('#email').keyup(function (e) {
 
 var text;
 
-$('#phone-no').keyup(function (e) {
+$('#apply_phone_no').keyup(function (e) {
 
-    var data = $('#phone-no').val().trim();
+    var data = $('#apply_phone_no').val().trim();
 
     console.log(data);
 
@@ -281,3 +282,127 @@ $('#sub-email').keyup(function (e) {
     }
 
 });
+
+
+var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+var validateEmail = function(data){
+    console.log('validate email',data);
+    return data.match(emailPattern)? true:false;
+}
+
+var subscribe_user = function(){
+    var email = $('#subscribe_user_email').val().trim();
+    console.log('subscribe user',email);
+    if(validateEmail(email)){
+        var requestData = {'email':email};
+        console.log("valid email");
+         $.ajax({
+            url: '/ic/subscribe',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            datatype:'json',
+            data:requestData,
+            crossDomain: true,
+            success: function (data) {
+               if(data.notification.code == 200){
+                    console.log("subscribe successfull")
+               }
+               else{
+                    console.log("subscribe failed")
+               }
+            }
+        });
+    }
+    else{
+        console.log("INvalid email");
+    }
+    return false;
+}
+
+var applyForCarrer = function(el){
+    console.log("apply for carrer",el);
+    $('#apply_error').html('');
+    var requestData = {},errMsg = '';
+    requestData.name = $('#apply_name').val();
+    requestData.email = $('#apply_email').val();
+    requestData.phone = $('#apply_phone_no').val();
+    requestData.role = $('#apply_designation').val();
+    console.log('form data',requestData);
+    if(!requestData.name || !requestData.email || !requestData.phone || !requestData.role){
+        errMsg = 'All fields are required.'
+        $('#apply_error').html(errMsg);
+    }
+    else if(!validateEmail(requestData.email)){
+        errMsg = 'Enter valid email adresss.';
+         $('#apply_error').html(errMsg);
+    }
+    else if(isNaN(requestData.phone)){
+        errMsg = 'Enter valid phone Number.';
+         $('#apply_error').html(errMsg);
+    }
+    else{
+        console.log('api calling');
+         $.ajax({
+            url: '/ic/careers',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data:requestData,
+            datatype:'json',
+            crossDomain: true,
+            success: function (data) {
+               if(data.notification.code == 200){
+                    console.log("apply successfull")
+               }
+            },
+            error:function(data){
+                 if(data.notification.code == 500){
+                    console.log("apply failed");
+               }
+            }
+        });
+    }
+}
+
+var contactUs = function(){
+    $('#contact_error').html('');
+    var requestData = {},errMsg = '';
+    requestData.name = $('#contact_name').val();
+    requestData.email = $('#contact_email').val();
+    requestData.phone = $('#contact_phone_no').val();
+    console.log("contactus",requestData);
+    if(!requestData.name || !requestData.email || !requestData.phone ){
+        errMsg = 'All fields are required.'
+        $('#contact_error').html(errMsg);
+    }
+    else if(!validateEmail(requestData.email)){
+        errMsg = 'Enter valid email adresss.';
+         $('#contact_error').html(errMsg);
+    }
+    else if(isNaN(requestData.phone)){
+        errMsg = 'Enter valid phone Number.';
+         $('#contact_error').html(errMsg);
+    }
+    else{
+        console.log('api calling');
+         $.ajax({
+            url: '/ic/contactus',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data:requestData,
+            datatype:'json',
+            crossDomain: true,
+            success: function (data) {
+               if(data.notification.code == 200){
+                    console.log("apply successfull")
+               }
+            },
+            error:function(data){
+                 if(data.notification.code == 500){
+                    console.log("apply failed");
+               }
+            }
+        });
+    }
+}
+
