@@ -293,17 +293,17 @@ var validateEmail = function(data){
 
 var subscribe_user = function(){
     var email = $('#subscribe_user_email').val().trim();
-    console.log('subscribe user',email);
+    console.log('subscribe user',JSON.stringify({'email':email}));
     if(validateEmail(email)){
         var requestData = {'email':email};
         console.log("valid email");
          $.ajax({
-            url: '/ic/subscribe',
+            url: 'http://127.0.0.1:5000/ic/subscribe',
             type: 'POST',
             contentType: "application/json; charset=utf-8",
-            datatype:'json',
-            data:requestData,
+            dataType:'json',
             crossDomain: true,
+            data:JSON.stringify(requestData),
             success: function (data) {
                if(data.notification.code == 200){
                     console.log("subscribe successfull")
@@ -344,12 +344,12 @@ var applyForCarrer = function(el){
     else{
         console.log('api calling');
          $.ajax({
-            url: '/ic/careers',
+            url: 'http://127.0.0.1:5000/ic/careers',
             type: 'POST',
             contentType: "application/json; charset=utf-8",
-            data:requestData,
-            datatype:'json',
+            dataType:'json',
             crossDomain: true,
+            data:JSON.stringify(requestData),
             success: function (data) {
                if(data.notification.code == 200){
                     console.log("apply successfull")
@@ -386,12 +386,12 @@ var contactUs = function(){
     else{
         console.log('api calling');
          $.ajax({
-            url: '/ic/contactus',
+            url: 'http://127.0.0.1:5000/ic/contactus',
             type: 'POST',
             contentType: "application/json; charset=utf-8",
-            data:requestData,
             datatype:'json',
             crossDomain: true,
+            data:JSON.stringify(requestData),
             success: function (data) {
                if(data.notification.code == 200){
                     console.log("apply successfull")
