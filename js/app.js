@@ -345,6 +345,8 @@ var applyForCarrer = function(el){
     }
     else{
         console.log('api calling');
+        // closing modal on clicking successfull submission
+                    $('#apply-modal').modal('hide');
          $.ajax({
             url: 'http://127.0.0.1:5000/ic/careers',
             type: 'POST',
@@ -355,6 +357,8 @@ var applyForCarrer = function(el){
             success: function (data) {
                if(data.notification.code == 200){
                     console.log("apply successfull")
+                        // closing modal on clicking successfull submission
+                   // $('#apply-modal').modal('hide');
                }
             },
             error:function(data){
@@ -364,12 +368,15 @@ var applyForCarrer = function(el){
             }
         });
     }
+
 }
 
 // closing modal on clicking close button
 $('#apply-modal').on('hidden.bs.modal', function () {
         $('.modal-body').find('textarea,input').val('');
 });
+
+
 
 var contactUs = function(){
     $('#contact_error').html('');
