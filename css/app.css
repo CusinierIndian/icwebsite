@@ -227,11 +227,13 @@ label{
 
 }
 .conter-span-days{
-	margin:10px 0px;
+
+ margin:0px 0px 20px 0px;
+
 }
 
 .conter-span-days >div{
-	min-width: 80px;
+	max-width: 80px;
     padding: 3px 10px;
     font-size: 20px;
     background: rgba(255, 255, 255, 0.48);
@@ -322,10 +324,10 @@ label{
 		padding:10px;
 	}
 	.conter-span-days >div {
-    	min-width: 65px;
+    	max-width: 65px;
     	padding: 3px 8px;
     	font-size: 16px;
-	}
+ }
 	.conter-span-no >div{
 		min-width: 65px;
 	    padding: 7px 10px;
@@ -337,6 +339,9 @@ label{
 	}
 	.nav-link{
 		color:#000 !important;
+	}
+	.service-heading{
+	margin-top:20px;
 	}
 	.why-us-heading,.career-heading{
 		font-size:25px;
