@@ -270,6 +270,7 @@ label{
 #map{
 	height:400px;
 	width:100%;
+	margin-top: 10px;
 }
 .service-card{
 	margin:15px;
@@ -341,7 +342,8 @@ label{
 		color:#000 !important;
 	}
 	.service-heading{
-	margin-top:20px;
+	margin-top:25px;
+	font-size:25px;
 	}
 	.why-us-heading,.career-heading{
 		font-size:25px;
