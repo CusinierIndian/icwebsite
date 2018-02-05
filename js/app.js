@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	console.log("page is loaded");
 
-	var countDownDate = new Date("Nov 1, 2017 11:46:00").getTime();
+	var countDownDate = new Date("Feb 28, 2018 11:46:00").getTime();
 	var x = setInterval(function() {
 
 	    // Get todays date and time
