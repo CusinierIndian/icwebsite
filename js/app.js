@@ -1,7 +1,6 @@
 $(document).ready(function(){
-	console.log("page is loaded");
 
-	var countDownDate = new Date("Feb 28, 2018 11:46:00").getTime();
+	var countDownDate = new Date("Apr 10, 2018 11:46:00").getTime();
 	var x = setInterval(function() {
 
 	    // Get todays date and time
@@ -44,7 +43,6 @@ $(document).ready(function(){
 			// Store hash
 			var hash = this.hash;
 			var position = ($(hash).offset().top - 80) + 'px';
-			console.log("position",position);
 
 			// Using jQuery's animate() method to add smooth page scroll
 			// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
@@ -73,8 +71,6 @@ $(document).ready(function(){
 
         var data = $(this).val();
 
-        console.log(data);
-
         if (data.length >= 1) {
 
             $(this).parent('div').removeClass('has-warning').addClass('has-success');
@@ -101,7 +97,6 @@ $(document).ready(function(){
 
         var data = $('#contact_email').val().trim();
 
-        console.log(data);
 
         if (data.match(pattern)) {
 
@@ -127,7 +122,6 @@ $(document).ready(function(){
 
         var data = $('#contact_phone_no').val().trim();
 
-        console.log(data);
 
         if ((isNaN(data))) {
 
@@ -154,11 +148,9 @@ $(document).ready(function(){
 	    var height = $(window).scrollTop();
 
 	    if(height  > 90) {
-	        console.log("condition true");
 	        $('.navbar').removeClass('transparent-navbar').addClass('fixed-navbar fixed-navbar-shadow');
 	    }
 	    else{
-	    	console.log("condition false");
 	    	$('.navbar').removeClass('fixed-navbar fixed-navbar-shadow').addClass('transparent-navbar');
 	    }
 	});
@@ -180,7 +172,6 @@ $('#apply_name').keyup(function () {
 
     var data = $(this).val();
 
-    console.log(data);
 
     if (data.length >= 1) {
 
@@ -205,7 +196,6 @@ $('#apply_email').keyup(function (e) {
 
     var data = $('#apply_email').val().trim();
 
-    console.log(data);
 
     if (data.match(pattern)) {
 
@@ -229,7 +219,6 @@ $('#apply_phone_no').keyup(function (e) {
 
     var data = $('#apply_phone_no').val().trim();
 
-    console.log(data);
 
 
 
@@ -267,7 +256,6 @@ $('#sub-email').keyup(function (e) {
 
     var data = $('#sub-email').val().trim();
 
-    console.log(data);
 
     if (data.match(pattern)) {
 
@@ -287,17 +275,14 @@ $('#sub-email').keyup(function (e) {
 var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
 var validateEmail = function(data){
-    console.log('validate email',data);
     return data.match(emailPattern)? true:false;
 }
 
 var subscribe_user = function(){
     var email = $('#subscribe_user_email').val().trim();
-    console.log('subscribe user',JSON.stringify({'email':email}));
     $('input').val('');
     if(validateEmail(email)){
         var requestData = {'email':email};
-        console.log("valid email");
          $.ajax({
             url: 'http://127.0.0.1:5000/ic/subscribe',
             type: 'POST',
@@ -307,30 +292,25 @@ var subscribe_user = function(){
             data:JSON.stringify(requestData),
             success: function (data) {
                if(data.notification.code == 200){
-                    console.log("subscribe successfull")
                }
                else{
-                    console.log("subscribe failed")
                }
             }
         });
     }
     else{
-        console.log("INvalid email");
     }
     return false;
 }
 
 var applyForCarrer = function(el){ 
    
-    console.log("apply for carrer",el);
     var requestData = {},errMsg = '';
     requestData.name = $('#apply_name').val();
     requestData.email = $('#apply_email').val();
     requestData.phone = $('#apply_phone_no').val();
     requestData.role = $('#apply_designation').val();
     $(".modal-body input").val("");
-    console.log('form data',requestData);
     if(!requestData.name || !requestData.phone || !requestData.role){
         errMsg = 'Marked fields are required.'
         $('#apply_error').html(errMsg);
@@ -344,7 +324,6 @@ var applyForCarrer = function(el){
          $('#apply_error').html(errMsg);
     }
     else{
-        console.log('api calling');
         // closing modal on clicking successfull submission
                     $('#apply-modal').modal('hide');
          $.ajax({
@@ -356,14 +335,12 @@ var applyForCarrer = function(el){
             data:JSON.stringify(requestData),
             success: function (data) {
                if(data.notification.code == 200){
-                    console.log("apply successfull")
                         // closing modal on clicking successfull submission
                    // $('#apply-modal').modal('hide');
                }
             },
             error:function(data){
                  if(data.notification.code == 500){
-                    console.log("apply failed");
                }
             }
         });
@@ -385,7 +362,6 @@ var contactUs = function(){
     requestData.email = $('#contact_email').val();
     requestData.phone = $('#contact_phone_no').val();
     $('input').val('');
-    console.log("contactus",requestData);
     
     if(!requestData.name || !requestData.email || !requestData.phone ){
         errMsg = 'All fields are required.'
@@ -400,7 +376,6 @@ var contactUs = function(){
          $('#contact_error').html(errMsg);
     }
     else{
-        console.log('api calling');
          $.ajax({
             url: 'http://127.0.0.1:5000/ic/contactus',
             type: 'POST',
@@ -410,12 +385,10 @@ var contactUs = function(){
             data:JSON.stringify(requestData),
             success: function (data) {
                if(data.notification.code == 200){
-                    console.log("apply successfull")
                }
             },
             error:function(data){
                  if(data.notification.code == 500){
-                    console.log("apply failed");
                }
             }
         });
@@ -423,3 +396,9 @@ var contactUs = function(){
 }
 
 
+var submitForm =function(){
+        var frm = document.getElementsByName('contact-form')[0];
+        frm.submit(); // Submit the form
+        frm.reset();  // Reset all form data
+        return false; 
+}    
